@@ -34,14 +34,14 @@ headingFrame1.place(relx=0.2, rely=0.1, relwidth=0.6, relheight=0.16)
 headingLabel = Label(headingFrame1, text="Welcome to \n Ioana's Library!", bg='black', fg='white', font=('Times New Roman',20))
 headingLabel.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-addButton = Button(root, text="Add Book Details", bg='black', fg='white', font=('Times New Roman',15))
+addButton = Button(root, text="Add Book Details", bg='black', fg='white', font=('Times New Roman',15), command=addBook)
 addButton.place(relx=0.28, rely=0.4, relwidth=0.45, relheight=0.1)
 
 deleteButton = Button(root, text="Delete Book", bg='black', fg='white', font=('Times New Roman',15))
-deleteButton.place(relx=0.28, rely=0.5, relwidth=0.45, relheight=0.1)
+deleteButton.place(relx=0.28, rely=0.55, relwidth=0.45, relheight=0.1)
 
 viewButton = Button(root, text="View Book List", bg='black', fg='white', font=('Times New Roman',15))
-viewButton.place(relx=0.28, rely=0.6, relwidth=0.45, relheight=0.1)
+viewButton.place(relx=0.28, rely=0.7, relwidth=0.45, relheight=0.1)
 
 
 
