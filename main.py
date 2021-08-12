@@ -1,5 +1,5 @@
 from tkinter import *
-from PIL import ImageTk, Image  # PIL -> Pillow
+from PIL import ImageTk, Image
 import pymysql
 from tkinter import messagebox
 from AddBook import *

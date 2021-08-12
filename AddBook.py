@@ -45,53 +45,51 @@ def addBook():
     # Enter Table Names here
     bookTable = "books"  # Book Table
 
-    Canvas1 = Canvas(root)
+    Canvas2 = Canvas(root, bg='#7E6551')
+    Canvas2.pack(expand=True, fill=BOTH)
 
-    Canvas1.config(bg="#ff6e40")
-    Canvas1.pack(expand=True, fill=BOTH)
-
-    headingFrame1 = Frame(root, bg="#FFBB00", bd=5)
+    headingFrame1 = Frame(root, bg="black", bd=1)
     headingFrame1.place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.13)
 
-    headingLabel = Label(headingFrame1, text="Add a new book", bg='black', fg='white', font=('Times New Roman', 15))
+    headingLabel = Label(headingFrame1, text="Add a new book", bg='#466362', fg='white', font=('Times New Roman', 15))
     headingLabel.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-    labelFrame = Frame(root, bg='black')
-    labelFrame.place(relx=0.1, rely=0.4, relwidth=0.8, relheight=0.4)
+    labelFrame = Frame(root, bg='#7E6551')
+    labelFrame.place(relx=0.1, rely=0.25, relwidth=0.8, relheight=0.4)
 
     # Book ID
-    lb1 = Label(labelFrame, text="Book ID : ", bg='black', fg='white', font=('Times New Roman', 10))
+    lb1 = Label(labelFrame, text="Book ID : ", bg='#7E6551', fg='black', font=('Times New Roman', 15))
     lb1.place(relx=0.05, rely=0.2, relheight=0.08)
 
     bookID = Entry(labelFrame)
     bookID.place(relx=0.3, rely=0.2, relwidth=0.62, relheight=0.08)
 
     # Title
-    lb2 = Label(labelFrame, text="Title : ", bg='black', fg='white', font=('Times New Roman', 10))
+    lb2 = Label(labelFrame, text="Title : ", bg='#7E6551', fg='black', font=('Times New Roman', 15))
     lb2.place(relx=0.05, rely=0.35, relheight=0.08)
 
     bookTitle = Entry(labelFrame)
     bookTitle.place(relx=0.3, rely=0.35, relwidth=0.62, relheight=0.08)
 
     # Book Author
-    lb3 = Label(labelFrame, text="Author : ", bg='black', fg='white', font=('Times New Roman', 10))
+    lb3 = Label(labelFrame, text="Author : ", bg='#7E6551', fg='black', font=('Times New Roman', 15))
     lb3.place(relx=0.05, rely=0.50, relheight=0.08)
 
     bookAuthor = Entry(labelFrame)
     bookAuthor.place(relx=0.3, rely=0.50, relwidth=0.62, relheight=0.08)
 
     # Book Status
-    lb4 = Label(labelFrame, text="Type (hardback/paperback): ", bg='black', fg='white', font=('Times New Roman', 10))
-    lb4.place(relx=0.05, rely=0.65, relheight=0.08)
+    lb4 = Label(labelFrame, text="Type (hardback/\npaperback): ", bg='#7E6551', fg='black', font=('Times New Roman', 15))
+    lb4.place(relx=0.05, rely=0.65, relheight=0.14)
 
     bookType = Entry(labelFrame)
     bookType.place(relx=0.3, rely=0.65, relwidth=0.62, relheight=0.08)
 
     # Submit Button
-    SubmitBtn = Button(root, text="SUBMIT", bg='#d1ccc0', fg='black', command=bookRegister, font=('Times New Roman', 10))
-    SubmitBtn.place(relx=0.28, rely=0.9, relwidth=0.18, relheight=0.08)
+    SubmitBtn = Button(root, text="SUBMIT", bg='#466362', fg='white', relief='raised', command=bookRegister, font=('Times New Roman', 10))
+    SubmitBtn.place(relx=0.28, rely=0.7, relwidth=0.2, relheight=0.08)
 
-    quitBtn = Button(root, text="Quit", bg='#f7f1e3', fg='black', command=root.destroy, font=('Times New Roman', 10))
-    quitBtn.place(relx=0.53, rely=0.9, relwidth=0.18, relheight=0.08)
+    quitBtn = Button(root, text="QUIT", bg='#466362', fg='white', relief='raised', command=root.destroy, font=('Times New Roman', 10))
+    quitBtn.place(relx=0.53, rely=0.7, relwidth=0.2, relheight=0.08)
 
     root.mainloop()
