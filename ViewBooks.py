@@ -49,21 +49,30 @@ def view_books():
         frm.pack(side=tk.LEFT, padx=20, pady=20)
         frm.place(relx=0.18, rely=0.3)
 
-        tv = ttk.Treeview(frm, columns=(1,2,3,4), show="headings", height="15")
-        tv.pack()
+        style = ttk.Style()
+        style.configure("Treeview",
+                        background="#AE6832",
+                        foreground="black",
 
-        tv.heading(1, text="ID", anchor=CENTER)
-        tv.heading(2, text="Name", anchor=CENTER)
-        tv.heading(3, text="Author", anchor=CENTER)
-        tv.heading(4, text="Type", anchor=CENTER)
 
-        tv.column(1, width=30, anchor=CENTER)
-        tv.column(2, width=200, anchor=CENTER)
-        tv.column(3, width=170, anchor=CENTER)
-        tv.column(4, width=100, anchor=CENTER)
+                        )
+        
+
+        bookTree = ttk.Treeview(frm, columns=(1, 2, 3, 4), show="headings", height="15")
+        bookTree.pack()
+
+        bookTree.heading(1, text="ID", anchor=CENTER)
+        bookTree.heading(2, text="Name", anchor=CENTER)
+        bookTree.heading(3, text="Author", anchor=CENTER)
+        bookTree.heading(4, text="Type", anchor=CENTER)
+
+        bookTree.column(1, width=30, anchor=CENTER)
+        bookTree.column(2, width=200, anchor=CENTER)
+        bookTree.column(3, width=170, anchor=CENTER)
+        bookTree.column(4, width=100, anchor=CENTER)
 
         for i in rows:
-            tv.insert('', 'end', values=i)
+            bookTree.insert('', 'end', values=i)
     except:
         messagebox.showinfo("Couldn't fetch database information.")
 
