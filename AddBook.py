@@ -10,9 +10,9 @@ def bookRegister():
     author = bookAuthor.get()
     type = bookType.get()
 
-    insertBooks = "insert into " + bookTable + " values('" + bid + "','" + title + "','" + author + "','" + type + "')"
+    insertBooks = "INSERT INTO " + bookTable + " VALUES('" + bid + "','" + title + "','" + author + "','" + type + "')"
     try:
-        cur.execute(insertBooks)
+        current.execute(insertBooks)
         con.commit()
         messagebox.showinfo('Success', "Book added successfully")
     except:
@@ -27,7 +27,7 @@ def bookRegister():
 
 
 def addBook():
-    global bookID, bookTitle, bookAuthor, bookType, Canvas1, con, cur, bookTable, root
+    global bookID, bookTitle, bookAuthor, bookType, Canvas1, con, current, bookTable, root
 
     root = Tk()
     root.title("Library")
@@ -40,7 +40,7 @@ def addBook():
     mydatabase = "db"
 
     con = pymysql.connect(host="localhost", user="root", password=mypass, database=mydatabase)
-    cur = con.cursor()
+    current = con.cursor()
 
     # Enter Table Names here
     bookTable = "books"  # Book Table

@@ -40,7 +40,7 @@ addButton.place(relx=0.28, rely=0.4, relwidth=0.45, relheight=0.1)
 deleteButton = Button(root, text="Delete Book", bg='black', fg='white', font=('Times New Roman',15))
 deleteButton.place(relx=0.28, rely=0.55, relwidth=0.45, relheight=0.1)
 
-viewButton = Button(root, text="View Book List", bg='black', fg='white', font=('Times New Roman',15))
+viewButton = Button(root, text="View Book List", bg='black', fg='white', font=('Times New Roman',15), command=viewBooks)
 viewButton.place(relx=0.28, rely=0.7, relwidth=0.45, relheight=0.1)
 
 
