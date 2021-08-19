@@ -16,6 +16,7 @@ root.title("My library")
 root.minsize(width=400, height=400)
 root.maxsize(width=800, height=800)
 root.geometry("800x800")
+root.resizable(False, False)
 
 # Adding a background image
 background_image = Image.open("lib.jpg")

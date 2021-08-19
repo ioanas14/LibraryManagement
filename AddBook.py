@@ -34,6 +34,7 @@ def addBook():
     root.minsize(width=400, height=400)
     root.maxsize(width=800, height=800)
     root.geometry("800x800")
+    root.resizable(False, False)
 
     # Add your own database name and password here to reflect in the code
     mypass = "Soare141225"

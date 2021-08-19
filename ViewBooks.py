@@ -1,7 +1,10 @@
 from tkinter import *
+from tkinter import ttk
 from PIL import ImageTk,Image
 from tkinter import messagebox
 import pymysql
+import tkinter as tk
+import mysql.connector
 
 mypass = "Soare141225"
 mydatabase="db"
@@ -12,13 +15,13 @@ current = con.cursor()
 # Enter Table Names here
 bookTable = "books"
 
-
 def viewBooks():
     root = Tk()
     root.title("Library")
     root.minsize(width=400, height=400)
     root.maxsize(width=800, height=800)
     root.geometry("800x800")
+    root.resizable(False, False)
 
     Canvas1 = Canvas(root)
     Canvas1.config(bg="#7E6551")
@@ -27,33 +30,36 @@ def viewBooks():
     headingFrame1 = Frame(root, bg="black", bd=1)
     headingFrame1.place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.13)
 
-    headingLabel = Label(headingFrame1, text="Book list", bg='#466362', fg='white', font=('Times New Roman', 15))
-
+    headingLabel = Label(headingFrame1, text="Book list", bg='#466362', fg='white', font=('Times New Roman', 20))
     headingLabel.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-    labelFrame = Frame(root, bg='black')
-    labelFrame.place(relx=0.1, rely=0.3, relwidth=0.8, relheight=0.5)
-    y = 0.25
 
-    Label(labelFrame, text="%-10s %-40s %-30s %-20s" % ('ID', 'Title', 'Author', 'Type'),
-          bg='black', fg='white', font=('Times New Roman', 11)).place(relx=0.05, rely=0.1)
+    getBooks = "SELECT * FROM " + bookTable
+    current.execute(getBooks)
+    rows = current.fetchall()
+    total = current.rowcount
 
-    Label(labelFrame, text="-------------------------------------------------------------------------------------",
-          bg='black', fg='white').place(relx=0.05, rely=0.2)
-    getBooks = "select * from " + bookTable
-    try:
-        current.execute(getBooks)
-        con.commit()
+    frm = Frame(root)
+    frm.pack(side=tk.LEFT, padx=20, pady=20)
+    frm.place(relx=0.18, rely=0.3)
 
-        for i in current:
-            # i[0] = book id, i[1] = title, i[2] = author, i[3] = type
-            Label(labelFrame, text="%-10s %-40s %-30s %-20s" % (i[0], i[1], i[2], i[3]), bg='black', fg='white',
-                  font=('Times New Roman', 11)).place(relx=0.05, rely=y)
-            y += 0.1
-    except:
-        messagebox.showinfo("Failed to fetch files from database")
+    tv = ttk.Treeview(frm, columns=(1,2,3,4), show="headings", height="15")
+    tv.pack()
 
-    quitBtn = Button(root, text="QUIT", bg='#466362', fg='white', relief='raised', command=root.destroy, font=('Times New Roman', 10))
-    quitBtn.place(relx=0.4, rely=0.9, relwidth=0.18, relheight=0.08)
+    tv.heading(1, text="ID", anchor=CENTER)
+    tv.heading(2, text="Name", anchor=CENTER)
+    tv.heading(3, text="Author", anchor=CENTER)
+    tv.heading(4, text="Type", anchor=CENTER)
+
+    tv.column(1, width=30, anchor=CENTER)
+    tv.column(2, width=200, anchor=CENTER)
+    tv.column(3, width=170, anchor=CENTER)
+    tv.column(4, width=100, anchor=CENTER)
+
+    for i in rows:
+        tv.insert('', 'end', values=i)
+
+    quitBtn = Button(root, text="QUIT", bg='#466362', fg='white', relief='raised', command=root.destroy, font=('Times New Roman', 12))
+    quitBtn.place(relx=0.4, rely=0.75, relwidth=0.18, relheight=0.08)
 
     root.mainloop()
